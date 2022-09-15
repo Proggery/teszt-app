@@ -10,17 +10,17 @@ const Container = styled.div`
 `;
 
 const Home = ({ type }) => {
-  const [videos, setVideos] = useState([]);
+  // const [videos, setVideos] = useState([]);
 
-  useEffect(() => {
-    const fetchVideos = async () => {
-      const res = await axios.get(
-        `api/videos/${type}`
-      );
-      setVideos(res.data);
-    };
-    fetchVideos();
-  }, [type]);
+  // useEffect(() => {
+  //   const fetchVideos = async () => {
+  //     const res = await axios.get(
+  //       `/videos/${type}`
+  //     );
+  //     setVideos(res.data);
+  //   };
+  //   fetchVideos();
+  // }, [type]);
 
   return (
     <Container>

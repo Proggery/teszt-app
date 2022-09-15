@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "homepage": "https://teszt-app2.herokuapp.com/",
   "scripts": {
     "server": "nodemon index.js",
     "client": "npm start --prefix client",
