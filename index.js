@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser"
+import path from "path";
+import { fileURLToPath } from 'url';
 
 // Routes
 import authRoutes from "./routes/auth.js";
@@ -11,6 +13,9 @@ import commentRoutes from "./routes/comments.js";
 
 const app = express();
 const port = 5555;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 dotenv.config();
 
@@ -42,6 +47,13 @@ app.use((err, req, res, next) => {
     message,
   });
 });
+
+app.use(express.static(path.resolve(__dirname, "client/build")));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '/client/build', 'index.html'));
+});
+
 
 app.listen(port, () => {
   connect();
