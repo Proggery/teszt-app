@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "type": "module",
-  "homepage": "https://teszt-app2.herokuapp.com/",
   "scripts": {
+    "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm start --prefix client",
     "heroku-postbuild": "cd client && npm install && npm run build",
