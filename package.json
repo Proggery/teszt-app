@@ -1,0 +1,31 @@
+{
+  "name": "teszt-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "build": "cd client && yarn run build",
+    "install-client": "cd client && yarn install",
+    "heroku-postbuild": "yarn run install-client && yarn run build",
+    "server": "nodemon server.js",
+    "develop": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run start --prefix client\"",
+    "start": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run start --prefix client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Proggery/teszt-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Proggery/teszt-app/issues"
+  },
+  "homepage": "https://github.com/Proggery/teszt-app#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19",
+    "path": "^0.12.7"
+  }
+}
