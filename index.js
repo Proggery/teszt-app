@@ -17,40 +17,40 @@ const port = process.env.PORT || 5555;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// app.use(cors());
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
 
-dotenv.config();
+// dotenv.config();
 
-const connect = () => {
-  mongoose
-    .connect(process.env.MONGO)
-    .then(() => {
-      console.log("Sikeres csatlakozás az adatbázishoz");
-    })
-    .catch((err) => {
-      throw err;
-    });
-};
+// const connect = () => {
+//   mongoose
+//     .connect(process.env.MONGO)
+//     .then(() => {
+//       console.log("Sikeres csatlakozás az adatbázishoz");
+//     })
+//     .catch((err) => {
+//       throw err;
+//     });
+// };
 
-app.use(cookieParser());
-app.use(express.json());
+// app.use(cookieParser());
+// app.use(express.json());
 
-app.use("/api/auth", authRoutes);
-app.use("/api/users", userRoutes);
-app.use("/api/videos", videoRoutes);
-app.use("/api/comments", commentRoutes);
+// app.use("/api/auth", authRoutes);
+// app.use("/api/users", userRoutes);
+// app.use("/api/videos", videoRoutes);
+// app.use("/api/comments", commentRoutes);
 
-app.use((err, req, res, next) => {
-  const status = err.status || 500;
-  const message = err.message || "Hiba!";
-  return res.status(status).json({
-    success: false,
-    status,
-    message,
-  });
-});
+// app.use((err, req, res, next) => {
+//   const status = err.status || 500;
+//   const message = err.message || "Hiba!";
+//   return res.status(status).json({
+//     success: false,
+//     status,
+//     message,
+//   });
+// });
 
 app.use(express.static(path.resolve(__dirname, "client/build")));
 
@@ -61,6 +61,6 @@ app.get('*', (req, res) => {
 
 
 app.listen(port, () => {
-  connect();
+  // connect();
   console.log(`A szerver fut: http://localhost:${port}`);
 });
