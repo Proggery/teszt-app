@@ -17,7 +17,9 @@ const Home = ({ type }) => {
 
   useEffect(() => {
     const fetchVideos = async () => {
-      const res = await axios.get(`http://localhost:5555/api/videos/${type}`);
+      const res = await axios.get(
+        `https://teszt-app2.herokuapp.com/api/videos/${type}`
+      );
       setVideos(res.data);
     };
     fetchVideos();
