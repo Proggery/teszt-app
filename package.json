@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "server": "nodemon index.js",
-    "client": "yarn start --prefix client",
+    "client": "npm start --prefix client",
     "heroku-postbuild": "cd client && yarn install && yarn run build",
-    "dev": "concurrently \"yarn run server\" \" yarn run client\""
+    "dev": "concurrently \"npm run server\" \" npm run client\""
   },
   "keywords": [],
   "author": "",
