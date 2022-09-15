@@ -24,9 +24,10 @@ const Home = ({ type }) => {
 
   return (
     <Container>
-      {videos.map((video, index) => (
+      <h2>teszt</h2>
+      {/* {videos.map((video, index) => (
         <Card key={index} video={video} type={type} />
-      ))}
+      ))} */}
     </Container>
   );
 };
