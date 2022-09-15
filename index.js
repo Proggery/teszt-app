@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser"
 import path from "path";
 import { fileURLToPath } from 'url';
 
-Routes
+// Routes
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import videoRoutes from "./routes/videos.js";
