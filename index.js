@@ -59,7 +59,7 @@ app.use(bodyParser.json());
 //   res.sendFile(path.resolve(__dirname, '/client/build', 'index.html'));
 // });
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.send("blaaaaaaaaaa ez is");
 });
 
