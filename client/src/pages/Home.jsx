@@ -1,10 +1,7 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Card from "../components/Card";
-import axios from "axios";
-import { useParams } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
