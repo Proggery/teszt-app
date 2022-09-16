@@ -4,10 +4,11 @@ import {
   ThumbDownOffAltOutlined,
   ThumbUpOutlined
 } from "@mui/icons-material";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import apiClient from "../api/apiClient";
+import { API_URL } from "../api/api";
 import Comments from "../components/Comments";
 
 const Container = styled.div`
@@ -122,7 +123,7 @@ const Video = () => {
 
   useEffect(() => {
     const fetchVideo = async () => {
-      const res = await apiClient.get(`/videos/find/${id}`);
+      const res = await axios.get(`${API_URL}/videos/find/${id}`);
       setVideo(res.data);
     };
     fetchVideo();
@@ -131,7 +132,7 @@ const Video = () => {
   useEffect(() => {
     if (video.userId) {
       const fetchChannel = async () => {
-        const res = await apiClient.get(`/users/find/${video.userId}`);
+        const res = await axios.get(`${API_URL}/users/find/${video.userId}`);
         setChannel(res.data);
       };
       fetchChannel();
@@ -146,7 +147,7 @@ const Video = () => {
 
   const sub = () => {
     const fetchSubscribe = async () => {
-      await apiClient.put(`/users/sub/${channel._id}`);
+      await axios.put(`${API_URL}/users/sub/${channel._id}`);
     };
     fetchSubscribe();
     setIsSub(!isSub);
@@ -154,7 +155,7 @@ const Video = () => {
 
   const unsub = () => {
     const fetchSubscribe = async () => {
-      await apiClient.put(`/users/unsub/${channel._id}`);
+      await axios.put(`${API_URL}/users/unsub/${channel._id}`);
     };
     fetchSubscribe();
     setIsSub(!isSub);

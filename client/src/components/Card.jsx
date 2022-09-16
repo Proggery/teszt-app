@@ -1,12 +1,9 @@
-import React from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { ExternalLink } from "react-external-link";
 import styled from "styled-components";
 import { format } from "timeago.js";
-import axios from "axios";
-import { useEffect } from "react";
-import { ExternalLink } from "react-external-link";
-import apiClient from "../api/apiClient";
+import apiClient, { API_URL, CLIENT_URL } from "../api/api";
 
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "360px"};
@@ -58,13 +55,11 @@ const Info = styled.div`
 `;
 
 const Card = ({ type, video }) => {
-  const { REACT_APP_API_URL } = process.env;
-
   const [channel, setChannel] = useState({});
 
   useEffect(() => {
     const fetchChannel = async () => {
-      const res = await apiClient.get(`/users/find/${video.userId}`);
+      const res = await axios.get(`${API_URL}/users/find/${video.userId}`);
       setChannel(res.data);
     };
     fetchChannel();
@@ -73,7 +68,7 @@ const Card = ({ type, video }) => {
   return (
     <ExternalLink
       target="_blank"
-      href={`${REACT_APP_API_URL}/video/${video._id}`}
+      href={`${CLIENT_URL}/video/${video._id}`}
       style={{ textDecoration: "none" }}
     >
       <Container type={type}>

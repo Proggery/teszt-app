@@ -1,11 +1,11 @@
-import React from "react";
-import { useState } from "react";
-import styled from "styled-components";
-import apiClient from "../api/apiClient";
-import { useDispatch } from "react-redux";
-import { loginStart, loginSuccess, loginFailure } from "../redux/userSlice";
-import { auth, provider } from "../firebase";
+import axios from "axios";
 import { signInWithPopup } from "firebase/auth";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import styled from "styled-components";
+import { API_URL } from "../api/api";
+import { auth, provider } from "../firebase";
+import { loginFailure, loginStart, loginSuccess } from "../redux/userSlice";
 
 const Container = styled.div`
   display: flex;
@@ -80,7 +80,7 @@ const SignIn = () => {
     e.preventDefault();
     dispatch(loginStart());
     try {
-      const res = await apiClient.post("/auth/signin", { name, password });
+      const res = await axios.post(`${API_URL}/auth/signin`, { name, password });
       dispatch(loginSuccess(res.data));
       window.location.replace("/");
     } catch (error) {
@@ -92,7 +92,8 @@ const SignIn = () => {
     dispatch(loginStart());
     signInWithPopup(auth, provider)
       .then((res) => {
-        apiClient
+        axios
+
           .post("/auth/google", {
             name: res.user.displayName,
             email: res.user.email,

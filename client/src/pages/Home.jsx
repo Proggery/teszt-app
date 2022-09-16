@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import apiClient from "../api/apiClient";
+import { API_URL } from "../api/api";
 import Card from "../components/Card";
 
 const Container = styled.div`
@@ -16,7 +16,7 @@ const Home = ({ type }) => {
   useEffect(() => {
     const fetchVideos = async () => {
       const res = await axios.get(
-        `https://teszt-app2.herokuapp.com/api/videos/${type}`
+        `${API_URL}/videos/${type}`
       );
       setVideos(res.data);
     };
