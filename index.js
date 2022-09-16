@@ -1,16 +1,16 @@
 import express from "express";
-import cors from "cors";
-import bodyParser from "body-parser";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import cookieParser from "cookie-parser"
+// import cors from "cors";
+// import bodyParser from "body-parser";
+// import mongoose from "mongoose";
+// import dotenv from "dotenv";
+// import cookieParser from "cookie-parser"
 import path from "path";
 import { fileURLToPath } from 'url';
 
-import authRoutes from "./routes/auth.js";
-import userRoutes from "./routes/users.js";
-import videoRoutes from "./routes/videos.js";
-import commentRoutes from "./routes/comments.js";
+// import authRoutes from "./routes/auth.js";
+// import userRoutes from "./routes/users.js";
+// import videoRoutes from "./routes/videos.js";
+// import commentRoutes from "./routes/comments.js";
 
 const app = express();
 const port = process.env.PORT || 5555;
