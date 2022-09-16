@@ -6,6 +6,7 @@ import { format } from "timeago.js";
 import axios from "axios";
 import { useEffect } from "react";
 import { ExternalLink } from "react-external-link";
+import apiClient from "../api/apiClient";
 
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "360px"};
@@ -57,11 +58,13 @@ const Info = styled.div`
 `;
 
 const Card = ({ type, video }) => {
+  const { REACT_APP_API_URL } = process.env;
+
   const [channel, setChannel] = useState({});
 
   useEffect(() => {
     const fetchChannel = async () => {
-      const res = await axios.get(`/users/find/${video.userId}`);
+      const res = await apiClient.get(`/users/find/${video.userId}`);
       setChannel(res.data);
     };
     fetchChannel();
@@ -70,7 +73,7 @@ const Card = ({ type, video }) => {
   return (
     <ExternalLink
       target="_blank"
-      href={`http://localhost:3000/video/${video._id}`}
+      href={`${REACT_APP_API_URL}/video/${video._id}`}
       style={{ textDecoration: "none" }}
     >
       <Container type={type}>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
+import apiClient from "../api/apiClient";
 import { useDispatch } from "react-redux";
 import { loginStart, loginSuccess, loginFailure } from "../redux/userSlice";
 import { auth, provider } from "../firebase";
@@ -80,9 +80,9 @@ const SignIn = () => {
     e.preventDefault();
     dispatch(loginStart());
     try {
-      const res = await axios.post("/auth/signin", { name, password });
+      const res = await apiClient.post("/auth/signin", { name, password });
       dispatch(loginSuccess(res.data));
-      window.location.replace("/")
+      window.location.replace("/");
     } catch (error) {
       dispatch(loginFailure());
     }
@@ -92,7 +92,7 @@ const SignIn = () => {
     dispatch(loginStart());
     signInWithPopup(auth, provider)
       .then((res) => {
-        axios
+        apiClient
           .post("/auth/google", {
             name: res.user.displayName,
             email: res.user.email,
