@@ -46,7 +46,7 @@ function App() {
               </Routes>
             </Wrapper>
           </Main>
-        </Hash>
+        </HashRouter>
       </Container>
     </ThemeProvider>
   );
