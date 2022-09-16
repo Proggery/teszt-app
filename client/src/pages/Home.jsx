@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import apiClient from "../api/apiClient";
@@ -14,7 +15,9 @@ const Home = ({ type }) => {
 
   useEffect(() => {
     const fetchVideos = async () => {
-      const res = await apiClient.get(`/videos/${type}`);
+      const res = await axios.get(
+        `https://teszt-app2.herokuapp.com/api/videos/${type}`
+      );
       setVideos(res.data);
     };
     fetchVideos();
