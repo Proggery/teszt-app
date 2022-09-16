@@ -5,8 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "server": "nodemon index.js",
+    "start": "nodemon index.js",
     "heroku-postbuild": "cd client && yarn install && yarn run build"
   },
   "keywords": [],
