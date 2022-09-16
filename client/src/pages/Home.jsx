@@ -10,24 +10,23 @@ const Container = styled.div`
 `;
 
 const Home = ({ type }) => {
-  // const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchVideos = async () => {
-  //     const res = await axios.get(
-  //       `/videos/${type}`
-  //     );
-  //     setVideos(res.data);
-  //   };
-  //   fetchVideos();
-  // }, [type]);
+  useEffect(() => {
+    const fetchVideos = async () => {
+      const res = await axios.get(
+        `/videos/${type}`
+      );
+      setVideos(res.data);
+    };
+    fetchVideos();
+  }, [type]);
 
   return (
     <Container>
-      <h2>teszt</h2>
-      {/* {videos.map((video, index) => (
+      {videos.map((video, index) => (
         <Card key={index} video={video} type={type} />
-      ))} */}
+      ))}
     </Container>
   );
 };
