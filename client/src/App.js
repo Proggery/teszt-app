@@ -30,7 +30,7 @@ function App() {
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Container>
-        <HashRouter>
+        <BrowserRouter>
           <Menu darkMode={darkMode} setDarkMode={setDarkMode} />
           <Main>
             <Navbar />
@@ -48,7 +48,7 @@ function App() {
               </Routes>
             </Wrapper>
           </Main>
-        </HashRouter>
+        </BrowserRouter>
       </Container>
     </ThemeProvider>
   );
