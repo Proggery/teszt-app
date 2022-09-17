@@ -143,7 +143,7 @@ const Video = () => {
     if (signinUser._id !== video.userId) {
       setIsUser(!isUser);
     }
-  }, [signinUser, video, isUser]);
+  }, [signinUser, video]);
 
   const sub = () => {
     const fetchSubscribe = async () => {
