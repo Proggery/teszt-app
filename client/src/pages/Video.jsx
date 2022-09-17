@@ -2,7 +2,7 @@ import {
   AddTaskOutlined,
   ReplyOutlined,
   ThumbDownOffAltOutlined,
-  ThumbUpOutlined
+  ThumbUpOutlined,
 } from "@mui/icons-material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -143,7 +143,7 @@ const Video = () => {
     if (signinUser._id !== video.userId) {
       setIsUser(!isUser);
     }
-  }, [signinUser._id, video.userId, isUser]);
+  }, [signinUser, video, isUser]);
 
   const sub = () => {
     const fetchSubscribe = async () => {
@@ -223,7 +223,7 @@ const Video = () => {
               </Description>
             </ChannelDetail>
           </ChannelInfo>
-          {/* {!isUser && subscribe()} */}
+          {!isUser && subscribe()}
         </Channel>
         <Hr />
         <Comments />
