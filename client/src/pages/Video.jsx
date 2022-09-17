@@ -91,7 +91,7 @@ const Video = () => {
         <Details>
           <Info>{video.desc}</Info>
           <Buttons>
-            {isUser && (
+            {!isUser && (
               <>
                 <Button>
                   <ThumbUpOutlined />
