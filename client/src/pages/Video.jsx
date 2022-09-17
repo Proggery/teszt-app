@@ -140,8 +140,6 @@ const Video = () => {
   }, [video]);
 
   useEffect(() => {
-    console.log(typeof currentUser._id);
-    console.log(typeof video.userId);
     if (video.userId !== undefined) {
       if (currentUser._id !== video.userId) {
         setIsUser(false);
@@ -174,7 +172,7 @@ const Video = () => {
       return <Subscribe onClick={unsub}>UNSUBSCRIBE</Subscribe>;
     }
   };
-  console.log(isUser);
+
   return (
     <Container>
       <Content>
@@ -192,16 +190,20 @@ const Video = () => {
         <Details>
           <Info>{video.desc}</Info>
           <Buttons>
-            <Button>
-              <ThumbUpOutlined />
-              {video.likes && video.likes.length === 0 ? 0 : video.likes}
-            </Button>
-            <Button>
-              <ThumbDownOffAltOutlined />
-              {video.dislikes && video.dislikes.length === 0
-                ? 0
-                : video.dislikes}
-            </Button>
+            {isUser && (
+              <>
+                <Button>
+                  <ThumbUpOutlined />
+                  {video.likes && video.likes.length === 0 ? 0 : video.likes}
+                </Button>
+                <Button>
+                  <ThumbDownOffAltOutlined />
+                  {video.dislikes && video.dislikes.length === 0
+                    ? 0
+                    : video.dislikes}
+                </Button>
+              </>
+            )}{" "}
             <Button>
               <ReplyOutlined /> Share
             </Button>
@@ -225,7 +227,7 @@ const Video = () => {
               </Description>
             </ChannelDetail>
           </ChannelInfo>
-          {isUser ? null : subscribe()}
+          {!isUser && subscribe()}
         </Channel>
         <Hr />
         <Comments />

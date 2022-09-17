@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ExternalLink } from "react-external-link";
 import styled from "styled-components";
 import { format } from "timeago.js";
-import { API_URL, CLIENT_URL } from "../api/api";
+import { API_URL } from "../api/api";
 
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "360px"};
