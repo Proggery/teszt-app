@@ -5,8 +5,12 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js",
-    "heroku-postbuild": "cd client && yarn install && yarn run build"
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "cd client && yarn start",
+    "build": "cd client && yarn run build",
+    "heroku-postbuild": "cd client && yarn install && yarn run build",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\""
   },
   "keywords": [],
   "author": "",

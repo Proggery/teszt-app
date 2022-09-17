@@ -143,7 +143,7 @@ const Video = () => {
     if (signinUser._id !== video.userId) {
       setIsUser(!isUser);
     }
-  }, [signinUser._id, video.userId]);
+  }, [signinUser._id, video.userId, isUser]);
 
   const sub = () => {
     const fetchSubscribe = async () => {
@@ -223,7 +223,7 @@ const Video = () => {
               </Description>
             </ChannelDetail>
           </ChannelInfo>
-          {!isUser && subscribe()}
+          {/* {!isUser && subscribe()} */}
         </Channel>
         <Hr />
         <Comments />

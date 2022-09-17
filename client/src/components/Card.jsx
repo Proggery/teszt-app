@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ExternalLink } from "react-external-link";
 import styled from "styled-components";
 import { format } from "timeago.js";
-import apiClient, { API_URL, CLIENT_URL } from "../api/api";
+import { API_URL, CLIENT_URL } from "../api/api";
 
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "360px"};
@@ -68,7 +68,7 @@ const Card = ({ type, video }) => {
   return (
     <ExternalLink
       target="_blank"
-      href={`${CLIENT_URL}/video/${video._id}`}
+      href={`/video/${video._id}`}
       style={{ textDecoration: "none" }}
     >
       <Container type={type}>
