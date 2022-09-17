@@ -139,11 +139,11 @@ const Video = () => {
     }
   }, [video.userId]);
 
-  useEffect(() => {
-    if (signinUser._id !== video.userId) {
-      setIsUser(!isUser);
-    }
-  }, [signinUser, video]);
+  // useEffect(() => {
+  //   if (signinUser._id !== video.userId) {
+  //     setIsUser(!isUser);
+  //   }
+  // }, [signinUser, video]);
 
   const sub = () => {
     const fetchSubscribe = async () => {
