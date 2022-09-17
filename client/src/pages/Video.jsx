@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { API_URL } from "../api/api";
 import Comments from "../components/Comments";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   display: flex;
@@ -111,15 +112,14 @@ const Subscribe = styled.button`
 const Video = () => {
   const params = useParams();
   const id = params.id;
-  let signinUser = localStorage.getItem("persist:root");
-  signinUser = JSON.parse(signinUser);
-  signinUser = JSON.parse(signinUser.user);
-  signinUser = signinUser.currentUser;
+  const { currentUser } = useSelector((state) => state.user);
 
   const [video, setVideo] = useState({});
   const [channel, setChannel] = useState({});
   const [isSub, setIsSub] = useState(true);
-  const [isUser, setIsUser] = useState(false);
+  const [isUser, setIsUser] = useState(true);
+
+  console.log(currentUser);
 
   useEffect(() => {
     const fetchVideo = async () => {
@@ -140,7 +140,13 @@ const Video = () => {
   }, [video]);
 
   useEffect(() => {
-    if (signinUser._id !== video.userId) {
+    console.log(typeof currentUser._id);
+    console.log(typeof video.userId);
+    if (video.userId !== undefined) {
+      if (currentUser._id !== video.userId) {
+        setIsUser(false);
+      }
+    } else {
       setIsUser(true);
     }
   }, [video]);
@@ -168,7 +174,7 @@ const Video = () => {
       return <Subscribe onClick={unsub}>UNSUBSCRIBE</Subscribe>;
     }
   };
-
+  console.log(isUser);
   return (
     <Container>
       <Content>
@@ -186,20 +192,16 @@ const Video = () => {
         <Details>
           <Info>{video.desc}</Info>
           <Buttons>
-            {!isUser && (
-              <>
-                <Button>
-                  <ThumbUpOutlined />
-                  {video.likes && video.likes.length === 0 ? 0 : video.likes}
-                </Button>
-                <Button>
-                  <ThumbDownOffAltOutlined />
-                  {video.dislikes && video.dislikes.length === 0
-                    ? 0
-                    : video.dislikes}
-                </Button>
-              </>
-            )}
+            <Button>
+              <ThumbUpOutlined />
+              {video.likes && video.likes.length === 0 ? 0 : video.likes}
+            </Button>
+            <Button>
+              <ThumbDownOffAltOutlined />
+              {video.dislikes && video.dislikes.length === 0
+                ? 0
+                : video.dislikes}
+            </Button>
             <Button>
               <ReplyOutlined /> Share
             </Button>
@@ -223,7 +225,7 @@ const Video = () => {
               </Description>
             </ChannelDetail>
           </ChannelInfo>
-          {!isUser && subscribe()}
+          {isUser ? null : subscribe()}
         </Channel>
         <Hr />
         <Comments />
