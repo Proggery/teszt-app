@@ -57,13 +57,13 @@ const Info = styled.div`
 const Card = ({ type, video }) => {
   const [channel, setChannel] = useState({});
 
-  useEffect(() => {
-    const fetchChannel = async () => {
-      const res = await axios.get(`${API_URL}/users/find/${video.userId}`);
-      setChannel(res.data);
-    };
-    fetchChannel();
-  }, [video.userId]);
+  // useEffect(() => {
+  //   const fetchChannel = async () => {
+  //     const res = await axios.get(`${API_URL}/users/find/${video.userId}`);
+  //     setChannel(res.data);
+  //   };
+  //   fetchChannel();
+  // }, [video.userId]);
 
   return (
     <ExternalLink
