@@ -68,7 +68,7 @@ const Card = ({ type, video }) => {
   return (
     <ExternalLink
       target="_blank"
-      href={`/video/${video._id}`}
+      href={`${CLIENT_URL}/video/${video._id}`}
       style={{ textDecoration: "none" }}
     >
       <Container type={type}>
