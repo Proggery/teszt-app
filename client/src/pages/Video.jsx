@@ -121,23 +121,23 @@ const Video = () => {
   const [isSub, setIsSub] = useState(true);
   const [isUser, setIsUser] = useState(false);
 
-  useEffect(() => {
-    const fetchVideo = async () => {
-      const res = await axios.get(`${API_URL}/videos/find/${id}`);
-      setVideo(res.data);
-    };
-    fetchVideo();
-  }, [id]);
+  // useEffect(() => {
+  //   const fetchVideo = async () => {
+  //     const res = await axios.get(`${API_URL}/videos/find/${id}`);
+  //     setVideo(res.data);
+  //   };
+  //   fetchVideo();
+  // }, [id]);
 
-  useEffect(() => {
-    if (video.userId) {
-      const fetchChannel = async () => {
-        const res = await axios.get(`${API_URL}/users/find/${video.userId}`);
-        setChannel(res.data);
-      };
-      fetchChannel();
-    }
-  }, [video.userId]);
+  // useEffect(() => {
+  //   if (video.userId) {
+  //     const fetchChannel = async () => {
+  //       const res = await axios.get(`${API_URL}/users/find/${video.userId}`);
+  //       setChannel(res.data);
+  //     };
+  //     fetchChannel();
+  //   }
+  // }, [video]);
 
   // useEffect(() => {
   //   if (signinUser._id !== video.userId) {
